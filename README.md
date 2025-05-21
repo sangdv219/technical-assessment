@@ -14,24 +14,14 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tôi chọn Next.js vì đây là framework toàn diện cho React, hỗ trợ render linh hoạt (SSR/SSG), tối ưu SEO, và có trải nghiệm dev hiện đại. Dưới đây là các lý do chính:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+SEO & Hiệu năng: Với Server-side Rendering (SSR) hoặc Static Generation (SSG), Next.js giúp cải thiện hiệu suất tải trang ban đầu, rất quan trọng với SEO và tốc độ load.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Routing tích hợp sẵn: Không cần cấu hình router riêng như React Router, Next.js dùng file-based routing rất trực quan, giúp giảm boilerplate code.
 
-## Learn More
+Fullstack-ready: Next.js hỗ trợ API routes, thích hợp cho các bài test fullstack, không cần thiết lập backend riêng.
 
-To learn more about Next.js, take a look at the following resources:
+Built-in optimization: Tự động tối ưu hình ảnh (next/image), preload link (next/link), hỗ trợ internationalization, giúp tăng trải nghiệm người dùng.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# technical-assessment
+Khả năng mở rộng: Phù hợp cho cả MVP nhỏ và production-grade app. Dễ dàng scale, triển khai qua Vercel, Docker hoặc cloud khác.
