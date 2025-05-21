@@ -1,103 +1,163 @@
-import Image from "next/image";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { memo } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  type CardProps = {
+    title: string;
+    buttonText: string;
+  };
+  const CardCustomize = memo(({ title, buttonText }: CardProps) => {
+    return (
+      <Card>
+        <div className="flex justify-between items-center p-4">
+          <div>
+            <h3 className="text-lg font-semibold">{title}</h3>
+            <div className="h-2 bg-gray-200 rounded w-48 mt-2"></div>
+          </div>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline">{buttonText}</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Pending Supplier Info</DialogTitle>
+              </DialogHeader>
+              <div>
+                <p className="text-sm">Supplier Name: ABC Corporation</p>
+                <p className="text-sm">Status: Pending Approval</p>
+                <Button className="mt-2">Approve</Button>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
+      </Card>
+    )
+  })
+  return (
+    <div className="flex min-h-screen">
+      {/* Sidebar */}
+      <aside className="w-64 bg-gray-100 p-4 border-r hidden md:block">
+        <h2 className="text-xl font-semibold mb-6">Admin Dashboard</h2>
+        <nav className="space-y-4">
+          <a href="#" className="block text-sm text-gray-800 hover:font-semibold">Dashboard</a>
+          <a href="#" className="block text-sm text-gray-800 hover:font-semibold">Pending Suppliers</a>
+          <a href="#" className="block text-sm text-gray-800 hover:font-semibold">Pending Events</a>
+          <a href="#" className="block text-sm text-gray-800 hover:font-semibold">Moderate Posts</a>
+          <a href="#" className="block text-sm text-gray-800 hover:font-semibold">User Management</a>
+        </nav>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 p-4">
+      <h2 className="text-2xl font-bold mb-4">Admin Dashboard</h2>
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Card>
+            <CardHeader>
+              <b className="text-2xl font-bold text-center">8</b>
+            </CardHeader>
+            <CardDescription>
+              <CardTitle className="text-center">Submissions</CardTitle>
+            </CardDescription>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <b className="text-2xl font-bold text-center">150</b>
+            </CardHeader>
+            <CardDescription>
+              <CardTitle className="text-center">Total Users</CardTitle>
+            </CardDescription>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <b className="text-2xl font-bold text-center">24</b>
+            </CardHeader>
+            <CardDescription>
+              <CardTitle className="text-center">Active Posts</CardTitle>
+            </CardDescription>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <b className="text-2xl font-bold text-center">2</b>
+            </CardHeader>
+            <CardDescription>
+              <CardTitle className="text-center">Reported Content</CardTitle>
+            </CardDescription>
+          </Card>
+        </section>
+
+        <section className="grid grid-cols-1 auto-rows-min md:grid-cols-2 gap-4 mt-4">
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Pending Suppliers</h2>
+            <div className="grid grid-cols-1 gap-4">
+              <CardCustomize
+                title="Supplier Name"
+                buttonText="Approve" />
+              <CardCustomize
+                title="Supplier Name"
+                buttonText="Approve" />
+            </div>
+          </div>
+
+          {/* Pending Events Column */}
+          <div className="grid auto-rows-min">
+            <h2 className="text-2xl font-bold mb-4">Pending Events</h2>
+            <div className="grid grid-cols-1 gap-4">
+              <CardCustomize
+                title="Event Name"
+                buttonText="Approve" />
+              <CardCustomize
+                title="Event Name"
+                buttonText="Reject" />
+            </div>
+          </div>
+        </section>
+
+        {/* Reported Posts */}
+        <section className="grid auto-rows-min mt-4">
+          <h2 className="text-2xl font-bold mb-4">Reported Posts</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <CardCustomize
+              title="Post Title"
+              buttonText="View" />
+            <CardCustomize
+              title="Post Title"
+              buttonText="View" />
+            <CardCustomize
+              title="Post Title"
+              buttonText="View" />
+            <CardCustomize
+              title="Post Title"
+              buttonText="View" />
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+
+
+
+      {/* Button that triggers a modal */}
+      {/* <div className="col-span-1 md:col-span-2 lg:col-span-4">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="mt-4 w-full">Open Details</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Pending Supplier Info</DialogTitle>
+              </DialogHeader>
+              <div>
+                <p className="text-sm">Supplier Name: ABC Corporation</p>
+                <p className="text-sm">Status: Pending Approval</p>
+                <Button className="mt-2">Approve</Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div> */}
     </div>
   );
 }
