@@ -14,14 +14,14 @@ pnpm dev
 bun dev
 ```
 
-Tôi chọn Next.js vì đây là framework toàn diện cho React, hỗ trợ render linh hoạt (SSR/SSG), tối ưu SEO, và có trải nghiệm dev hiện đại. Dưới đây là các lý do chính:
+I chose Next.js because it is a comprehensive framework for React, supports flexible rendering (SSR/SSG), is SEO-friendly, and has a modern dev experience. Here are the main reasons:
 
-SEO & Hiệu năng: Với Server-side Rendering (SSR) hoặc Static Generation (SSG), Next.js giúp cải thiện hiệu suất tải trang ban đầu, rất quan trọng với SEO và tốc độ load.
+SEO & Performance: With Server-side Rendering (SSR) or Static Generation (SSG), Next.js helps improve initial page load performance, which is important for SEO and loading speed.
 
-Routing tích hợp sẵn: Không cần cấu hình router riêng như React Router, Next.js dùng file-based routing rất trực quan, giúp giảm boilerplate code.
+Built-in routing: No need to configure a separate router like React Router, Next.js uses file-based routing which is very intuitive, helping to reduce boilerplate code.
 
-Fullstack-ready: Next.js hỗ trợ API routes, thích hợp cho các bài test fullstack, không cần thiết lập backend riêng.
+Fullstack-ready: Next.js supports API routes, suitable for fullstack tests, no need to set up a separate backend.
 
-Built-in optimization: Tự động tối ưu hình ảnh (next/image), preload link (next/link), hỗ trợ internationalization, giúp tăng trải nghiệm người dùng.
+Built-in optimization: Automatically optimize images (next/image), preload links (next/link), support internationalization, helping to improve user experience.
 
-Khả năng mở rộng: Phù hợp cho cả MVP nhỏ và production-grade app. Dễ dàng scale, triển khai qua Vercel, Docker hoặc cloud khác.
+Scalability: Suitable for both small MVPs and production-grade apps. Easy to scale, deploy via Vercel, Docker or other clouds.
